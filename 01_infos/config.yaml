@@ -1,6 +1,4 @@
-singularity:
-  ednatools: /media/superdisk/utils/conteneurs/ednatools.simg
-  obitools: /media/superdisk/utils/conteneurs/obitools.simg
+singularity: gbs_workflow.sif
 trimmomatic:
   type: PE
   threads: 16
