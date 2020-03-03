@@ -5,9 +5,16 @@
 RADseq workflow built around STACKS full-parallelized and automated using SNAKEMAKE 
 
 
-# Prerequisites
+# Installation
+
+## Prerequisites
 
 * python3
 * snakemake
 * singularity
 
+
+## Data files
+
+
+## Configuration
