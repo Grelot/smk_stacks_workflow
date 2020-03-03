@@ -1,0 +1,23 @@
+singularity:
+  ednatools: /media/superdisk/utils/conteneurs/ednatools.simg
+  obitools: /media/superdisk/utils/conteneurs/obitools.simg
+trimmomatic:
+  type: PE
+  threads: 16
+  illuminaclip: reservebenefit.fa,2,15,5
+  leading: 4
+  trailing: 4
+  slidingwindow: 10,15
+  minlen: 146
+
+process_radtags:
+    enzyme : SbfI
+    trim_length : 142
+    score_limit : 20
+    sliding_windows_size : 0.20
+    encoded : phred33
+    barcode_dist_1 : 1
+    barcode_dist_2 : 1
+    adapter_mm : 2
+    adapter_1 : ACACTCTTTCCCTACACGACGCTCTTCCGATCT,AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT,GATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCAGAACAA,CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCC
+    adapter_2 : ACACTCTTTCCCTACACGACGCTCTTCCGATCT,AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT,GATCGGAAGAGCGGTTCAGCAGGAATGCCGAGACCGATCAGAACAA,CAAGCAGAAGACGGCATACGAGATCGGTCTCGGCATTCCTGCTGAACCGCTCTTCC
