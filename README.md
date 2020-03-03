@@ -40,4 +40,4 @@ gstacks 2.5
 
 * Snakemake will use information stored into a configuration file in order to run the workflow.
 * You have to modify [01_infos/config.yaml](01_infos/config.yaml) to configure your own workflow.
-* A complete description of the configuration file is available on this [wiki page](https://github.com/Grelot/smk_stacks_workflow/wiki/Configuration-file]).
+* A complete description of the configuration file is available on this [wiki page](https://github.com/Grelot/smk_stacks_workflow/wiki/Configuration-file).
