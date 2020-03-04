@@ -5,13 +5,12 @@ Include: bash vim less man-db apt-utils tzdata
 
 
 %runscript
-    echo "Opening container...ubuntu beaver: STACKS 2.5, Trimmomatic 0.33, bwa-mem 1, bwa-mem 2, samtools 1.10, vcftools 0.1.15, bedtools 2.26.0, bbmap 38.79"
+    echo "Opening container...ubuntu beaver: STACKS 2.5, Trimmomatic 0.33, bwa-mem 1, bwa-mem 2, samtools 1.10, vcftools 0.1.15, bedtools 2.26.0, bbmap 38.79, illumina casava filter 1, FASTP latest"
 
 %environment
     export LC_ALL=C.UTF-8
     export PATH=$PATH:/bwa-mem2-2.0pre2_x64-linux/
-    export PATH=$PATH:/bbmap/
-
+    
 %labels
     MAINTAINER Pierre-Edouard_GUERIN
     INSTITUTE CNRS
@@ -23,6 +22,9 @@ Include: bash vim less man-db apt-utils tzdata
     vcftools 0.1.15
     bedtools 2.26.0
     bbmap 38.79
+    illumina_casava_filter 1
+    FASTP latest
+
 
 
 %post
@@ -125,3 +127,29 @@ Include: bash vim less man-db apt-utils tzdata
     cp -f ./adapters/* /usr/local/bin
     cp -f trimmomatic-0.33.jar /usr/local/bin
     cd ..
+    
+
+
+    ## FASTP
+    git clone https://github.com/OpenGene/fastp.git
+    cd fastp
+    make && make install
+    cd ..
+
+
+    ## illumina casava filter
+    wget http://cancan.cshl.edu/labmembers/gordon/fastq_illumina_filter/release/0.1/fastq_illumina_filter-0.1.tar.gz
+    tar -xzf fastq_illumina_filter-0.1.tar.gz
+    cd fastq_illumina_filter-0.1
+    make
+    chmod +x fastq_illumina_filter
+    cp fastq_illumina_filter /usr/local/bin
+    cd ..
+
+    ## remove phiX
+    wget "https://sourceforge.net/projects/bbmap/files/BBMap_38.79.tar.gz"
+    tar xvzf BBMap_38.79.tar.gz
+    chmod 777 -R bbmap
+    cp -R bbmap/ /usr/local/bin/
+
+
