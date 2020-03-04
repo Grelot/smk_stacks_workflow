@@ -9,7 +9,8 @@ Include: bash vim less man-db apt-utils tzdata
 
 %environment
     export LC_ALL=C.UTF-8
-    
+    export PATH=$PATH:/root/bwa-mem2-2.0pre2_x64-linux/
+    export PATH=$PATH:/root/bbmap/
 
 %labels
     MAINTAINER Pierre-Edouard_GUERIN
@@ -71,6 +72,7 @@ Include: bash vim less man-db apt-utils tzdata
     ## BWA 2
     curl -L https://github.com/bwa-mem2/bwa-mem2/releases/download/v2.0pre2/bwa-mem2-2.0pre2_x64-linux.tar.bz2 | tar jxf -
     export PATH=$PATH:/root/bwa-mem2-2.0pre2_x64-linux/
+    chmod +x /root/bwa-mem2-2.0pre2_x64-linux/bwa-mem2
 
 
     ## htslib
@@ -107,12 +109,13 @@ Include: bash vim less man-db apt-utils tzdata
     ## bedtools
     yes | apt-get install bedtools
 
-
+    ## BBmap
+    wget "https://sourceforge.net/projects/bbmap/files/BBMap_38.79.tar.gz"
+    tar -xvzf BBMap_38.79.tar.gz    
 
 
     ## JAVA
-    yes | apt-get install openjdk-8-jdk    
-
+    yes | apt-get install openjdk-8-jdk
 
 
     ## trimmomatic
