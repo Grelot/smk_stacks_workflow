@@ -9,8 +9,8 @@ Include: bash vim less man-db apt-utils tzdata
 
 %environment
     export LC_ALL=C.UTF-8
-    export PATH=$PATH:/root/bwa-mem2-2.0pre2_x64-linux/
-    export PATH=$PATH:/root/bbmap/
+    export PATH=$PATH:/bwa-mem2-2.0pre2_x64-linux/
+    export PATH=$PATH:/bbmap/
 
 %labels
     MAINTAINER Pierre-Edouard_GUERIN
