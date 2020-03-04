@@ -22,13 +22,17 @@ singularity pull --name gbs_workflow.sif shub://Grelot/smk_stacks_workflow:gbs_w
 Check if the container is working well
 ```
 singularity run gbs_workflow.sif
-## should output
+```
+should output
+```
 Opening container...ubuntu beaver: STACKS 2.5, Trimmomatic 0.33, bwa-mem 1, bwa-mem 2, samtools 1.10, vcftools 0.1.15, bedtools 2.26.0
 ```
 Example of use: running `stacks2` from the container
 ```
 singularity exec gbs_workflow.sif gstacks --version
-## should output
+```
+should output
+```
 gstacks 2.5
 ```
 
@@ -41,3 +45,4 @@ gstacks 2.5
 * Snakemake will use information stored into a configuration file in order to run the workflow.
 * You have to modify [01_infos/config.yaml](01_infos/config.yaml) to configure your own workflow.
 * A complete description of the configuration file is available on this [wiki page](https://github.com/Grelot/smk_stacks_workflow/wiki/Configuration-file).
+
