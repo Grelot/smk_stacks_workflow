@@ -39,7 +39,7 @@ gstacks 2.5
 
 ## Data files
 
-Illumina paired-end fastq files must be into a folder:
+Illumina paired-end fastq files must be stored into a folder:
 
 ```
 .
@@ -50,6 +50,7 @@ Illumina paired-end fastq files must be into a folder:
     └── runB_R2.fastq.gz
 
 ```
+ 
 
 
 ## Configuration

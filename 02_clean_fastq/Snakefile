@@ -8,20 +8,37 @@ runs = config["runs"]
 # RULES
 ###############################################################################
 
-rule all:
-    input:
-        expand("{folder}/{run}.fastq.gz", run=runs,folder=fastqf),
-        expand("02-fastq/{run}.fastq", run=runs),
-        expand("03-illumina_filter/{run}.i.fastq", run=runs),
-        expand("04-phix_filter/{run}.i.p.fastq", run=runs),
-        expand("05-trimmed/{run}.i.p.q.fastq.gz", run=runs),
-        expand("10-logs/fastqgz_gunzip/{run}.log", run=runs),
-        expand("10-logs/fastq_illumina_filter/{run}.log", run=runs),
-        expand("10-logs/phix_filter/{run}.log", run=runs),
-        expand("10-logs/quality_filter/{run}.log", run=runs),
-        expand("10-logs/quality_filter/{run}.json", run=runs),
-        expand("10-logs/quality_filter/{run}.html", run=runs),
+
+## fastq are paired-end mode ("PE") or single-end mode ("SE")
+if config["fastqMode"] == "PE":
+    rule all:
+        input:
+            expand("{folder}/{run}.fastq.gz", run=runs,folder=fastqf),
+            expand("02-fastq/{run}.fastq", run=runs),
+            expand("03-illumina_filter/{run}.i.fastq", run=runs),
+            expand("04-phix_filter/{run}.i.p.fastq", run=runs),
+            expand("05-trimmed/{run}.i.p.q.fastq.gz", run=runs),
+            expand("10-logs/fastqgz_gunzip/{run}.log", run=runs),
+            expand("10-logs/fastq_illumina_filter/{run}.log", run=runs),
+            expand("10-logs/phix_filter/{run}.log", run=runs),
+            expand("10-logs/quality_filter/{run}.log", run=runs),
+            expand("10-logs/quality_filter/{run}.json", run=runs),
+            expand("10-logs/quality_filter/{run}.html", run=runs),
+    include: "../00_rules/clean_fastq_se.smk"
+else:
+    rule all:
+        input:
+            expand("{folder}/{run}.fastq.gz", run=runs,folder=fastqf),
+            expand("02-fastq/{run}.fastq", run=runs),
+            expand("03-illumina_filter/{run}.i.fastq", run=runs),
+            expand("04-phix_filter/{run}.i.p.fastq", run=runs),
+            expand("05-trimmed/{run}.i.p.q.fastq.gz", run=runs),
+            expand("10-logs/fastqgz_gunzip/{run}.log", run=runs),
+            expand("10-logs/fastq_illumina_filter/{run}.log", run=runs),
+            expand("10-logs/phix_filter/{run}.log", run=runs),
+            expand("10-logs/quality_filter/{run}.log", run=runs),
+            expand("10-logs/quality_filter/{run}.json", run=runs),
+            expand("10-logs/quality_filter/{run}.html", run=runs),
 
 
-
-include: "../00_rules/clean_fastq.smk"
+    include: "../00_rules/clean_fastq_se.smk"

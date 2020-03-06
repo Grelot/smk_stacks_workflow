@@ -1,6 +1,7 @@
 threads_by_job: 2
 container: gbs_workflow.sif
 fastqFolder: /media/superdisk/reservebenefit/donnees/mackerel
+fastqMode: PE
 runs: 
   - runA
   - runB
