@@ -1,12 +1,18 @@
-singularity: gbs_workflow.sif
-trimmomatic:
-  type: PE
-  threads: 16
-  illuminaclip: reservebenefit.fa,2,15,5
-  leading: 4
-  trailing: 4
-  slidingwindow: 10,15
-  minlen: 146
+threads_by_job: 2
+container: gbs_workflow.sif
+fastqFolder: /media/superdisk/reservebenefit/donnees/mackerel
+runs: 
+  - runA
+  - runB
+  - ...
+fastp:
+  n_base_limit: 0
+  qualified_quality_phred: 18
+  unqualified_percent_limit: 40
+  length_required: 76
+  cut_tail_window_size: 4
+  cut_tail_mean_quality: 18
+  poly_g_min_len: 10
 
 process_radtags:
     enzyme : SbfI
